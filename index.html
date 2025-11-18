@@ -2,28 +2,40 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
     <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
 
-<div class="container">
-    <h1>Login</h1>
+    <div class="container">
 
-    <form id="loginForm">
+        <h1 class="title">Login</h1>
 
-        <label>Username</label>
-        <input type="text" id="loginUser">
-        <div class="error" id="loginUserError"></div>
+        <form id="login-form" class="form-box">
 
-        <label>Password</label>
-        <input type="password" id="loginPass">
-        <div class="error" id="loginPassError"></div>
+            <label>Username *</label>
+            <input type="text" id="login-username">
+            <p class="error" id="error-login-username"></p>
 
-        <button type="submit">Login</button>
-    </form>
-</div>
+            <label>Password *</label>
+            <input type="password" id="login-password">
+            <p class="error" id="error-login-password"></p>
 
-<script src="script.js"></script>
+            <p class="error" id="error-invalid"></p>
+
+            <button type="submit">Login</button>
+
+        </form>
+
+        <p style="text-align:center; margin-top:20px;">
+            Don’t have an account?
+            <a href="register.html" style="color:#e50914;">Register</a>
+        </p>
+
+    </div>
+
+    <script src="login.js"></script>
 </body>
 </html>
