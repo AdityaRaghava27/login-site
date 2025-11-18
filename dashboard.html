@@ -1,24 +1,95 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Dashboard</title>
-  <link rel="stylesheet" href="styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Dashboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #141414;
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .dashboard-container {
+            background: #1f1f1f;
+            padding: 30px;
+            border-radius: 10px;
+            width: 400px;
+            box-shadow: 0 0 15px rgba(255, 0, 0, 0.3);
+        }
+
+        h2 {
+            text-align: center;
+            color: #e50914;
+        }
+
+        .info {
+            margin: 10px 0;
+            padding: 10px;
+            background: #333;
+            border-radius: 5px;
+        }
+
+        button {
+            width: 100%;
+            margin-top: 20px;
+            padding: 10px;
+            background: #e50914;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background: #f6121d;
+        }
+    </style>
 </head>
 <body>
 
-<div class="container">
-  <h2>Welcome!</h2>
-  <p>You have successfully logged in.</p>
+    <div class="dashboard-container">
+        <h2>Welcome!</h2>
 
-  <button onclick="logout()">Logout</button>
-</div>
+        <div class="info"><strong>First Name:</strong> <span id="firstName"></span></div>
+        <div class="info"><strong>Middle Name:</strong> <span id="middleName"></span></div>
+        <div class="info"><strong>Last Name:</strong> <span id="lastName"></span></div>
+        <div class="info"><strong>Email:</strong> <span id="email"></span></div>
+        <div class="info"><strong>Phone:</strong> <span id="mobile"></span></div>
+        <div class="info"><strong>Username:</strong> <span id="username"></span></div>
 
-<script>
-  function logout() {
-    window.location.href = "index.html";
-  }
-</script>
+        <button onclick="logout()">Logout</button>
+    </div>
+
+    <script>
+        // Load user data from localStorage
+        const user = JSON.parse(localStorage.getItem("registeredUser"));
+
+        if (!user) {
+            alert("No user data found. Please register again.");
+            window.location.href = "register.html";
+        }
+
+        // Display user details
+        document.getElementById("firstName").innerText = user.firstName;
+        document.getElementById("middleName").innerText = user.middleName || "—";
+        document.getElementById("lastName").innerText = user.lastName;
+        document.getElementById("email").innerText = user.email;
+        document.getElementById("mobile").innerText = user.mobile || "—";
+        document.getElementById("username").innerText = user.username;
+
+        function logout() {
+            alert("Logged out successfully!");
+            window.location.href = "index.html";
+        }
+    </script>
 
 </body>
 </html>
