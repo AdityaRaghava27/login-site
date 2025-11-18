@@ -8,50 +8,40 @@
 <body>
 
 <div class="container">
-    <div class="form-box">
+    <h1>Register</h1>
 
-        <h2>Register</h2>
+    <form id="registerForm">
+        
+        <label>First Name</label>
+        <input type="text" id="firstName">
+        <div class="error" id="firstNameError"></div>
 
-        <form id="registerForm">
+        <label>Middle Name (Optional)</label>
+        <input type="text" id="middleName">
 
-            <label>First Name</label>
-            <input type="text" id="firstName">
-            <span class="error" id="firstNameError"></span>
+        <label>Last Name</label>
+        <input type="text" id="lastName">
+        <div class="error" id="lastNameError"></div>
 
-            <label>Middle Name (Optional)</label>
-            <input type="text" id="middleName">
+        <label>Phone Number (Optional)</label>
+        <input type="text" id="phoneNumber">
 
-            <label>Last Name</label>
-            <input type="text" id="lastName">
-            <span class="error" id="lastNameError"></span>
+        <label>Email</label>
+        <input type="email" id="email">
+        <div class="error" id="emailError"></div>
 
-            <label>Phone Number (Optional)</label>
-            <input type="text" id="phoneNumber">
+        <label>Username</label>
+        <input type="text" id="username">
+        <div class="error" id="usernameError"></div>
 
-            <label>Email</label>
-            <input type="email" id="email">
-            <span class="error" id="emailError"></span>
+        <label>Password</label>
+        <input type="password" id="password">
+        <div class="error" id="passwordError"></div>
 
-            <label>Username</label>
-            <input type="text" id="username">
-            <span class="error" id="usernameError"></span>
-
-            <label>Password</label>
-            <input type="password" id="password">
-            <span class="error" id="passwordError"></span>
-
-            <button type="button" onclick="registerUser()">Register</button>
-
-            <p class="switch-link">
-                Already have an account? <a href="index.html">Login</a>
-            </p>
-
-        </form>
-
-    </div>
+        <button type="submit">Register</button>
+    </form>
 </div>
 
 <script src="script.js"></script>
-
 </body>
 </html>
