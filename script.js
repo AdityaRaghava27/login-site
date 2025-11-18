@@ -1,117 +1,82 @@
-/* ---------------- REGISTER ---------------- */
+// REGISTER FORM VALIDATION
+const registerForm = document.getElementById("registerForm");
 
-function registerUser() {
-    let firstName = document.getElementById("firstName").value.trim();
-    let middleName = document.getElementById("middleName").value.trim();
-    let lastName = document.getElementById("lastName").value.trim();
-    let phoneNumber = document.getElementById("phoneNumber").value.trim();
-    let email = document.getElementById("email").value.trim();
-    let username = document.getElementById("username").value.trim();
-    let password = document.getElementById("password").value.trim();
+if (registerForm) {
+    registerForm.addEventListener("submit", function (e) {
+        e.preventDefault();
 
-    // Clear old errors
-    document.getElementById("firstNameError").textContent = "";
-    document.getElementById("lastNameError").textContent = "";
-    document.getElementById("emailError").textContent = "";
-    document.getElementById("usernameError").textContent = "";
-    document.getElementById("passwordError").textContent = "";
+        let hasError = false;
 
-    let valid = true;
+        // Get values
+        const firstName = document.getElementById("firstName").value.trim();
+        const lastName = document.getElementById("lastName").value.trim();
+        const email = document.getElementById("email").value.trim();
+        const username = document.getElementById("username").value.trim();
+        const password = document.getElementById("password").value.trim();
 
-    if (firstName === "") {
-        document.getElementById("firstNameError").textContent = "First name is required";
-        valid = false;
-    }
+        // Clear previous errors
+        document.querySelectorAll(".error").forEach(e => e.innerHTML = "");
 
-    if (lastName === "") {
-        document.getElementById("lastNameError").textContent = "Last name is required";
-        valid = false;
-    }
-
-    if (email === "") {
-        document.getElementById("emailError").textContent = "Email is required";
-        valid = false;
-    }
-
-    if (username === "") {
-        document.getElementById("usernameError").textContent = "Username is required";
-        valid = false;
-    }
-
-    if (password === "") {
-        document.getElementById("passwordError").textContent = "Password is required";
-        valid = false;
-    }
-
-    if (!valid) return;
-
-    let userData = {
-        firstName,
-        middleName,
-        lastName,
-        phoneNumber,
-        email,
-        username,
-        password
-    };
-
-    localStorage.setItem("user", JSON.stringify(userData));
-
-    alert("Registration Successful!");
-    window.location.href = "index.html";
-}
-
-/* ---------------- LOGIN ---------------- */
-
-function loginUser() {
-    let username = document.getElementById("loginUsername").value.trim();
-    let password = document.getElementById("loginPassword").value.trim();
-
-    document.getElementById("loginUsernameError").textContent = "";
-    document.getElementById("loginPasswordError").textContent = "";
-
-    let storedUser = JSON.parse(localStorage.getItem("user"));
-
-    if (!username) {
-        document.getElementById("loginUsernameError").textContent = "Username is required";
-        return;
-    }
-
-    if (!password) {
-        document.getElementById("loginPasswordError").textContent = "Password is required";
-        return;
-    }
-
-    if (!storedUser || storedUser.username !== username || storedUser.password !== password) {
-        alert("Invalid username or password");
-        return;
-    }
-
-    localStorage.setItem("loggedIn", "true");
-
-    window.location.href = "dashboard.html";
-}
-
-/* ---------------- DASHBOARD ---------------- */
-
-window.onload = function () {
-    if (window.location.pathname.includes("dashboard.html")) {
-        let loggedIn = localStorage.getItem("loggedIn");
-        if (!loggedIn) {
-            window.location.href = "index.html";
+        // Validation
+        if (firstName === "") {
+            document.getElementById("firstNameError").innerHTML = "First name is required";
+            hasError = true;
         }
 
-        let user = JSON.parse(localStorage.getItem("user"));
+        if (lastName === "") {
+            document.getElementById("lastNameError").innerHTML = "Last name is required";
+            hasError = true;
+        }
 
-        document.getElementById("welcomeText").textContent =
-            `Welcome, ${user.firstName} ${user.lastName}!`;
+        if (email === "") {
+            document.getElementById("emailError").innerHTML = "Email is required";
+            hasError = true;
+        }
 
-        document.getElementById("userEmail").textContent =
-            `Email: ${user.email}`;
-    }
-};
+        if (username === "") {
+            document.getElementById("usernameError").innerHTML = "Username is required";
+            hasError = true;
+        }
 
-function logoutUser() {
-    localStorage.removeItem("loggedIn");
-    window.location.href = "index.html";
+        if (password === "") {
+            document.getElementById("passwordError").innerHTML = "Password is required";
+            hasError = true;
+        }
+
+        if (!hasError) {
+            alert("Registration successful!");
+            window.location.href = "index.html";
+        }
+    });
+}
+
+
+// LOGIN FORM VALIDATION
+const loginForm = document.getElementById("loginForm");
+
+if (loginForm) {
+    loginForm.addEventListener("submit", function (e) {
+        e.preventDefault();
+
+        let hasError = false;
+
+        const user = document.getElementById("loginUser").value.trim();
+        const pass = document.getElementById("loginPass").value.trim();
+
+        document.querySelectorAll(".error").forEach(e => e.innerHTML = "");
+
+        if (user === "") {
+            document.getElementById("loginUserError").innerHTML = "Username is required";
+            hasError = true;
+        }
+
+        if (pass === "") {
+            document.getElementById("loginPassError").innerHTML = "Password is required";
+            hasError = true;
+        }
+
+        if (!hasError) {
+            window.location.href = "dashboard.html";
+        }
+    });
 }
