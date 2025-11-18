@@ -1,64 +1,117 @@
-/* ---------------- REGISTER VALIDATION ---------------- */
-if (document.getElementById("registerForm")) {
+/* ---------------- REGISTER ---------------- */
 
-    document.getElementById("registerForm").addEventListener("submit", function (e) {
-        e.preventDefault();
+function registerUser() {
+    let firstName = document.getElementById("firstName").value.trim();
+    let middleName = document.getElementById("middleName").value.trim();
+    let lastName = document.getElementById("lastName").value.trim();
+    let phoneNumber = document.getElementById("phoneNumber").value.trim();
+    let email = document.getElementById("email").value.trim();
+    let username = document.getElementById("username").value.trim();
+    let password = document.getElementById("password").value.trim();
 
-        let valid = true;
+    // Clear old errors
+    document.getElementById("firstNameError").textContent = "";
+    document.getElementById("lastNameError").textContent = "";
+    document.getElementById("emailError").textContent = "";
+    document.getElementById("usernameError").textContent = "";
+    document.getElementById("passwordError").textContent = "";
 
-        function validateField(id, errorId, msg) {
-            let field = document.getElementById(id);
-            let error = document.getElementById(errorId);
+    let valid = true;
 
-            if (field.value.trim() === "") {
-                error.textContent = msg;
-                valid = false;
-            } else {
-                error.textContent = "";
-            }
-        }
+    if (firstName === "") {
+        document.getElementById("firstNameError").textContent = "First name is required";
+        valid = false;
+    }
 
-        // Mandatory
-        validateField("firstName", "firstNameError", "First name is required");
-        validateField("lastName", "lastNameError", "Last name is required");
-        validateField("email", "emailError", "Email is required");
-        validateField("reg-username", "regUsernameError", "Username is required");
-        validateField("reg-password", "regPasswordError", "Password is required");
+    if (lastName === "") {
+        document.getElementById("lastNameError").textContent = "Last name is required";
+        valid = false;
+    }
 
-        // Optional fields (middleName & phone) - no validation
+    if (email === "") {
+        document.getElementById("emailError").textContent = "Email is required";
+        valid = false;
+    }
 
-        if (valid) {
-            alert("Registration successful!");
-            window.location.href = "index.html";
-        }
-    });
+    if (username === "") {
+        document.getElementById("usernameError").textContent = "Username is required";
+        valid = false;
+    }
+
+    if (password === "") {
+        document.getElementById("passwordError").textContent = "Password is required";
+        valid = false;
+    }
+
+    if (!valid) return;
+
+    let userData = {
+        firstName,
+        middleName,
+        lastName,
+        phoneNumber,
+        email,
+        username,
+        password
+    };
+
+    localStorage.setItem("user", JSON.stringify(userData));
+
+    alert("Registration Successful!");
+    window.location.href = "index.html";
 }
 
-/* ---------------- LOGIN VALIDATION ---------------- */
-if (document.getElementById("loginForm")) {
+/* ---------------- LOGIN ---------------- */
 
-    document.getElementById("loginForm").addEventListener("submit", function (e) {
-        e.preventDefault();
+function loginUser() {
+    let username = document.getElementById("loginUsername").value.trim();
+    let password = document.getElementById("loginPassword").value.trim();
 
-        let valid = true;
+    document.getElementById("loginUsernameError").textContent = "";
+    document.getElementById("loginPasswordError").textContent = "";
 
-        function validateField(id, errorId, msg) {
-            let field = document.getElementById(id);
-            let error = document.getElementById(errorId);
+    let storedUser = JSON.parse(localStorage.getItem("user"));
 
-            if (field.value.trim() === "") {
-                error.textContent = msg;
-                valid = false;
-            } else {
-                error.textContent = "";
-            }
+    if (!username) {
+        document.getElementById("loginUsernameError").textContent = "Username is required";
+        return;
+    }
+
+    if (!password) {
+        document.getElementById("loginPasswordError").textContent = "Password is required";
+        return;
+    }
+
+    if (!storedUser || storedUser.username !== username || storedUser.password !== password) {
+        alert("Invalid username or password");
+        return;
+    }
+
+    localStorage.setItem("loggedIn", "true");
+
+    window.location.href = "dashboard.html";
+}
+
+/* ---------------- DASHBOARD ---------------- */
+
+window.onload = function () {
+    if (window.location.pathname.includes("dashboard.html")) {
+        let loggedIn = localStorage.getItem("loggedIn");
+        if (!loggedIn) {
+            window.location.href = "index.html";
         }
 
-        validateField("login-username", "login-username-error", "Username is required");
-        validateField("login-password", "login-password-error", "Password is required");
+        let user = JSON.parse(localStorage.getItem("user"));
 
-        if (valid) {
-            alert("Login successful!");
-        }
-    });
+        document.getElementById("welcomeText").textContent =
+            `Welcome, ${user.firstName} ${user.lastName}!`;
+
+        document.getElementById("userEmail").textContent =
+            `Email: ${user.email}`;
+    }
+};
+
+function logoutUser() {
+    localStorage.removeItem("loggedIn");
+    window.location.href = "index.html";
 }
