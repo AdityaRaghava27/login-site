@@ -1,66 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Register</title>
-<link rel="stylesheet" href="style.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
 
 <div class="container">
-    <h2>Register</h2>
+    <div class="form-box">
 
-    <form id="registerForm">
+        <h2 class="form-title">Register</h2>
 
-        <div class="form-group">
+        <form id="registerForm">
+
             <label>First Name</label>
-            <input type="text" id="firstName" />
-            <p class="error" id="firstNameError"></p>
-        </div>
+            <input type="text" id="firstName">
+            <span class="error" id="firstNameError"></span>
 
-        <div class="form-group">
             <label>Middle Name (Optional)</label>
-            <input type="text" id="middleName" />
-            <p class="error" id="middleNameError"></p>
-        </div>
+            <input type="text" id="middleName">
 
-        <div class="form-group">
             <label>Last Name</label>
-            <input type="text" id="lastName" />
-            <p class="error" id="lastNameError"></p>
-        </div>
+            <input type="text" id="lastName">
+            <span class="error" id="lastNameError"></span>
 
-        <div class="form-group">
             <label>Phone Number (Optional)</label>
-            <input type="text" id="phone" />
-            <p class="error" id="phoneError"></p>
-        </div>
+            <input type="text" id="phoneNumber">
 
-        <div class="form-group">
             <label>Email</label>
-            <input type="email" id="email" />
-            <p class="error" id="emailError"></p>
-        </div>
+            <input type="email" id="email">
+            <span class="error" id="emailError"></span>
 
-        <div class="form-group">
             <label>Username</label>
-            <input type="text" id="reg-username" />
-            <p class="error" id="regUsernameError"></p>
-        </div>
+            <input type="text" id="username">
+            <span class="error" id="usernameError"></span>
 
-        <div class="form-group">
             <label>Password</label>
-            <input type="password" id="reg-password" />
-            <p class="error" id="regPasswordError"></p>
-        </div>
+            <input type="password" id="password">
+            <span class="error" id="passwordError"></span>
 
-        <button type="submit">Register</button>
+            <button type="button" onclick="registerUser()">Register</button>
 
-        <p><a href="index.html">Already have an account?</a></p>
-    </form>
+            <p class="switch-link">
+                Already have an account? <a href="login.html">Login</a>
+            </p>
+
+        </form>
+    </div>
 </div>
 
-<script src="script.js"></script>
+<script src="register.js"></script>
+
 </body>
 </html>
