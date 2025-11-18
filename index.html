@@ -8,32 +8,22 @@
 <body>
 
 <div class="container">
-    <div class="form-box">
+    <h1>Login</h1>
 
-        <h2>Login</h2>
+    <form id="loginForm">
 
-        <form id="loginForm">
+        <label>Username</label>
+        <input type="text" id="loginUser">
+        <div class="error" id="loginUserError"></div>
 
-            <label>Username</label>
-            <input type="text" id="loginUsername">
-            <span class="error" id="loginUsernameError"></span>
+        <label>Password</label>
+        <input type="password" id="loginPass">
+        <div class="error" id="loginPassError"></div>
 
-            <label>Password</label>
-            <input type="password" id="loginPassword">
-            <span class="error" id="loginPasswordError"></span>
-
-            <button type="button" onclick="loginUser()">Login</button>
-
-            <p class="switch-link">
-                New user? <a href="register.html">Register</a>
-            </p>
-
-        </form>
-
-    </div>
+        <button type="submit">Login</button>
+    </form>
 </div>
 
 <script src="script.js"></script>
-
 </body>
 </html>
