@@ -1,0 +1,136 @@
+/* ----------------------------------------------------------
+   GLOBAL NETFLIX STYLE
+---------------------------------------------------------- */
+
+body {
+  margin: 0;
+  font-family: 'Roboto', Arial, sans-serif;
+  background-color: #141414; /* Netflix dark background */
+  color: #ffffff;
+}
+
+.container {
+  width: 100%;
+  max-width: 420px;
+  margin: 80px auto;
+  background: rgba(0, 0, 0, 0.7);
+  padding: 35px;
+  border-radius: 8px;
+  box-shadow: 0 0 25px rgba(0, 0, 0, 0.8);
+}
+
+h2 {
+  text-align: center;
+  margin-bottom: 25px;
+  font-size: 28px;
+  font-weight: 600;
+  color: #e50914; /* Netflix red */
+}
+
+/* ----------------------------------------------------------
+   FORM INPUTS
+---------------------------------------------------------- */
+
+input {
+  width: 100%;
+  padding: 14px;
+  margin-bottom: 18px;
+  border: none;
+  border-radius: 4px;
+  background-color: #333333;  
+  color: #ffffff;
+  font-size: 16px;
+}
+
+input::placeholder {
+  color: #bbbbbb;
+}
+
+input:focus {
+  outline: 2px solid #e50914;
+  background-color: #404040;
+}
+
+/* ----------------------------------------------------------
+   BUTTONS
+---------------------------------------------------------- */
+
+button {
+  width: 100%;
+  background-color: #e50914;
+  border: none;
+  padding: 14px;
+  font-size: 18px;
+  border-radius: 4px;
+  color: white;
+  cursor: pointer;
+  transition: 0.25s;
+}
+
+button:hover {
+  background-color: #f6121d;
+  transform: scale(1.02);
+}
+
+/* ----------------------------------------------------------
+   LINKS
+---------------------------------------------------------- */
+
+a {
+  color: #e50914;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* ----------------------------------------------------------
+   DASHBOARD
+---------------------------------------------------------- */
+
+.dashboard {
+  text-align: center;
+  margin-top: 80px;
+}
+
+.dashboard h1 {
+  color: #e50914;
+  margin-bottom: 20px;
+}
+
+.dashboard p {
+  font-size: 18px;
+  color: #cccccc;
+}
+
+/* ----------------------------------------------------------
+   FORM LABELS
+---------------------------------------------------------- */
+
+label {
+  font-size: 15px;
+  color: #cccccc;
+  display: block;
+  margin-bottom: 6px;
+}
+
+/* ----------------------------------------------------------
+   MOBILE RESPONSIVE
+---------------------------------------------------------- */
+
+@media (max-width: 480px) {
+  .container {
+    max-width: 90%;
+    padding: 25px;
+  }
+
+  h2 {
+    font-size: 24px;
+  }
+
+  button {
+    font-size: 16px;
+  }
+}
