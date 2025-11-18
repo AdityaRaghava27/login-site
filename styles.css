@@ -1,98 +1,81 @@
-/* Netflix Inspired Styling */
+/* Netflix Style Theme */
 body {
     margin: 0;
     font-family: Arial, sans-serif;
     background-color: #000;
-    color: white;
+    color: #fff;
 }
 
+/* Center card */
 .container {
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: radial-gradient(circle, #111 40%, #000 90%);
-}
-
-.form-box {
-    background: rgba(0,0,0,0.85);
-    padding: 40px;
     width: 380px;
-    border-radius: 10px;
-    box-shadow: 0px 0px 15px rgba(255,0,0,0.4);
+    margin: 60px auto;
+    background: rgba(0, 0, 0, 0.85);
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 0 20px #b20710;
 }
 
-h2 {
+/* Page Titles */
+h1 {
     text-align: center;
+    color: #fff;
     font-size: 28px;
     margin-bottom: 25px;
+}
+
+/* Labels */
+label {
+    display: block;
+    margin-top: 15px;
+    font-size: 16px;
     font-weight: bold;
 }
 
-label {
-    display: block;
-    margin-top: 10px;
-    font-size: 16px;
-}
-
+/* Inputs */
 input {
     width: 100%;
     padding: 12px;
-    margin-top: 5px;
-    background: #222;
-    border: 1px solid #333;
-    border-radius: 6px;
-    color: white;
+    margin-top: 6px;
+    border: none;
+    border-radius: 5px;
+    background: #333;
+    color: #fff;
     font-size: 15px;
 }
 
 input:focus {
-    outline: none;
-    border-color: red;
+    outline: 2px solid #b20710;
 }
 
+/* Error message */
+.error {
+    color: #ff4c4c;
+    font-size: 14px;
+    margin-top: 5px;
+}
+
+/* Submit Button */
 button {
     width: 100%;
     padding: 12px;
-    background: red;
-    margin-top: 20px;
+    background-color: #e50914;
     border: none;
+    border-radius: 5px;
     color: white;
     font-size: 18px;
-    border-radius: 6px;
+    margin-top: 25px;
     cursor: pointer;
+    font-weight: bold;
 }
 
 button:hover {
-    background: #cc0000;
+    background-color: #f6121d;
 }
 
-.error {
-    color: #ff4444;
-    font-size: 14px;
-    margin-top: 4px;
-}
-
-.switch-link {
+/* Dashboard styling */
+.dashboard {
     text-align: center;
-    margin-top: 15px;
-}
-
-.switch-link a {
-    color: red;
-    text-decoration: none;
-}
-
-.switch-link a:hover {
-    text-decoration: underline;
-}
-
-/* Dashboard */
-.dashboard-box {
-    background: rgba(0,0,0,0.85);
-    padding: 40px;
-    width: 450px;
-    text-align: center;
-    border-radius: 12px;
-    box-shadow: 0px 0px 15px rgba(255,0,0,0.5);
+    margin-top: 50px;
+    font-size: 22px;
 }
