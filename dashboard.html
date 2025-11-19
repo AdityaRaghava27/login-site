@@ -5,12 +5,29 @@
     <title>Dashboard</title>
     <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
 
-<div class="container dashboard">
+<div class="container dashboard" style="text-align:center; margin-top:60px;">
+
     <h1>Welcome to Dashboard</h1>
     <p>You have logged in successfully.</p>
+
+    <button id="logoutBtn" style="margin-top:25px;">Logout</button>
+
 </div>
+
+<script>
+    // Logout button function
+    document.getElementById("logoutBtn").addEventListener("click", function () {
+        // If you want to clear saved login, uncomment below:
+        // localStorage.removeItem("savedUsername");
+        // localStorage.removeItem("savedPassword");
+
+        // Return to login page
+        window.location.href = "index.html";
+    });
+</script>
 
 </body>
 </html>
